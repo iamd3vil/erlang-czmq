@@ -5,9 +5,9 @@ if [ "x$CORE_TOP" = "x" ]; then
     export CORE_TOP
 fi
 
-CURLBIN=`which curl`
+CURLBIN=`which wget`
 if [ -z "$CURLBIN" ]; then
-    echo "Error: curl is required. Add it to 'PATH'"
+    echo "Error: wget is required. Add it to 'PATH'"
     exit 1
 fi
 
@@ -69,7 +69,7 @@ fetch()
     TARGET=$DISTDIR/$1
     if ! test -f $TARGET; then
         echo "==> Fetch $1 to $TARGET"
-        $CURLBIN --progress-bar -L $2/$1 -o $TARGET
+        $CURLBIN $2/$1 -O $TARGET
     fi
 }
 
