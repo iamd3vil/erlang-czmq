@@ -5,7 +5,7 @@ if [ "x$CORE_TOP" = "x" ]; then
     export CORE_TOP
 fi
 
-CURLBIN=`which wget`
+CURLBIN=`which curl`
 if [ -z "$CURLBIN" ]; then
     echo "Error: wget is required. Add it to 'PATH'"
     exit 1
