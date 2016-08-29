@@ -5,7 +5,7 @@ if [ "x$CORE_TOP" = "x" ]; then
     export CORE_TOP
 fi
 
-CURLBIN=`which curl`
+CURLBIN=`which wget`
 if [ -z "$CURLBIN" ]; then
     echo "Error: wget is required. Add it to 'PATH'"
     exit 1
@@ -69,7 +69,8 @@ fetch()
     TARGET=$DISTDIR/$1
     if ! test -f $TARGET; then
         echo "==> Fetch $1 to $TARGET"
-        $CURLBIN $2/$1 -O $TARGET
+        # TODO: Remove --no-check-certificate
+        $CURLBIN $2/$1 -O $TARGET --no-check-certificate
     fi
 }
 
